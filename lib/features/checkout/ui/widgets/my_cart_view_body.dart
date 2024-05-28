@@ -40,10 +40,11 @@ class MyCartViewBody extends StatelessWidget {
             title: 'Total',
             value: '\$ 37.97',
           ),
-          const SizedBox(height: 15),
+          const SizedBox(height: 16),
           CustomButton(
             onTap: () {},
-          )
+          ),
+          const SizedBox(height: 12),
         ],
       ),
     );
