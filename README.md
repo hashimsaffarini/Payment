@@ -5,5 +5,6 @@ This project demonstrates:
 - Payment integration in Flutter.
 - Designing and implementing user interface pages.
 
+![Thumbnail](https://github.com/hashimsaffarini/Payment/assets/124286269/c6654568-a939-4966-9fe9-a72a255eb381)
 
-![payment](https://github.com/hashimsaffarini/Payment/assets/124286269/da28d022-dae3-47a6-8558-761fc069a1ed)
+
