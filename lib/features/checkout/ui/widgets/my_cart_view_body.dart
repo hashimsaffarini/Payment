@@ -14,7 +14,7 @@ class MyCartViewBody extends StatelessWidget {
       child: Column(
         children: [
           const SizedBox(height: 18),
-          Image.asset(Assets.imagesBasketImage),
+          Expanded(child: Image.asset(Assets.imagesBasketImage)),
           const SizedBox(height: 25),
           const OrderInfoItem(
             title: 'Order Subtotal',
