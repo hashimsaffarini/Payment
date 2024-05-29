@@ -1,17 +1,18 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
-import 'package:payment/core/utils/app_images.dart';
 
 class PaymentMethodItem extends StatelessWidget {
   const PaymentMethodItem({
     super.key,
     required this.isActive,
+    required this.image,
   });
   final bool isActive;
+  final String image;
   @override
   Widget build(BuildContext context) {
     return AnimatedContainer(
-      duration: const Duration(milliseconds: 600),
+      duration: const Duration(milliseconds: 450),
       width: 103,
       height: 62,
       decoration: ShapeDecoration(
@@ -38,8 +39,7 @@ class PaymentMethodItem extends StatelessWidget {
         ),
         child: Center(
           child: SvgPicture.asset(
-            Assets.imagesCard,
-            height: 27,
+            image,
           ),
         ),
       ),
