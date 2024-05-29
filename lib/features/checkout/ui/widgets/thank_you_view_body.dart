@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:payment/features/checkout/ui/widgets/thank_you_card.dart';
 
 class ThankYouViewBody extends StatelessWidget {
   const ThankYouViewBody({super.key});
@@ -10,14 +11,7 @@ class ThankYouViewBody extends StatelessWidget {
       child: Stack(
         clipBehavior: Clip.none,
         children: [
-          Container(
-            decoration: ShapeDecoration(
-              color: const Color(0xffD9D9D9),
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(20),
-              ),
-            ),
-          ),
+          const ThankYouCard(),
           Positioned(
             bottom: MediaQuery.sizeOf(context).height * 0.2,
             left: -20,
