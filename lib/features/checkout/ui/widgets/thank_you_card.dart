@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:font_awesome_flutter/font_awesome_flutter.dart';
 import 'package:payment/core/utils/styles.dart';
@@ -16,7 +15,7 @@ class ThankYouCard extends StatelessWidget {
     return Container(
       width: double.infinity,
       decoration: ShapeDecoration(
-        color: const Color(0xffD9D9D9),
+        color: const Color(0xffEDEDED),
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(20),
         ),
