@@ -5,6 +5,7 @@ import 'package:payment/core/utils/styles.dart';
 
 AppBar buildAppBar({String? title}) {
   return AppBar(
+    backgroundColor: Colors.transparent,
     leading: Center(
       child: SvgPicture.asset(
         Assets.imagesArrow,
