@@ -5,8 +5,10 @@ class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
     required this.onTap,
+    required this.title,
   });
   final void Function()? onTap;
+  final String title;
   @override
   Widget build(BuildContext context) {
     return GestureDetector(
@@ -18,9 +20,9 @@ class CustomButton extends StatelessWidget {
           color: const Color(0xff34A853),
           borderRadius: BorderRadius.circular(15),
         ),
-        child: const Center(
+        child: Center(
           child: Text(
-            'Complete Payment',
+            title,
             textAlign: TextAlign.center,
             style: Styles.style22,
           ),
