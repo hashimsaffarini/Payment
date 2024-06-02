@@ -8,14 +8,16 @@ import 'package:payment/features/checkout/data/models/payment_intent_model/payme
 class StripeService {
   final ApiService apiService = ApiService();
   Future<PaymentIntentModel> createPaymentIntent(
-      PaymentIintentInputModel paymentIintentInputModel) async {
+      PaymentIintentInputModel paymentIntentInputModel) async {
     var response = await apiService.post(
-      body: paymentIintentInputModel.toJson(),
+      body: paymentIntentInputModel.toJson(),
       contentType: Headers.formUrlEncodedContentType,
       url: 'https://api.stripe.com/v1/payment_intents',
       token: ApiKeys.secretKey,
     );
+
     var paymentIntentModel = PaymentIntentModel.fromJson(response.data);
+
     return paymentIntentModel;
   }
 
