@@ -24,4 +24,8 @@ class StripeService {
             paymentIntentClientSecret: paymentIntentClientSecret,
             merchantDisplayName: 'Hashim'));
   }
+
+  Future<void> presentPaymentSheet() async {
+    await Stripe.instance.presentPaymentSheet();
+  }
 }
