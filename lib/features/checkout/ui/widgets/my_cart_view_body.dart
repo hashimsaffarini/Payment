@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:payment/core/utils/app_images.dart';
 import 'package:payment/core/widgets/custom_button.dart';
-import 'package:payment/features/checkout/ui/payment_details_view.dart';
+import 'package:payment/features/checkout/data/repos/checkout_repo_impl.dart';
+import 'package:payment/features/checkout/logic/cubit/payment_cubit.dart';
 import 'package:payment/features/checkout/ui/widgets/order_info_item.dart';
-import 'package:payment/features/checkout/ui/widgets/payment_methods_list_view.dart';
+import 'package:payment/features/checkout/ui/widgets/payment_method_bottom_sheet.dart';
 import 'package:payment/features/checkout/ui/widgets/total_price.dart';
 
 class MyCartViewBody extends StatelessWidget {
@@ -55,40 +57,14 @@ class MyCartViewBody extends StatelessWidget {
                   ),
                   context: context,
                   builder: (context) {
-                    return const PaymentMethodsButtomSheets();
+                    return BlocProvider(
+                      create: (context) => PaymentCubit(CheckoutRepoImpl()),
+                      child: const PaymentMethodsButtomSheets(),
+                    );
                   });
             },
           ),
           const SizedBox(height: 12),
-        ],
-      ),
-    );
-  }
-}
-
-class PaymentMethodsButtomSheets extends StatelessWidget {
-  const PaymentMethodsButtomSheets({super.key});
-
-  @override
-  Widget build(BuildContext context) {
-    return Padding(
-      padding: const EdgeInsets.all(16),
-      child: Column(
-        mainAxisSize: MainAxisSize.min,
-        children: [
-          const SizedBox(
-            height: 16,
-          ),
-          const PaymentMethodsListView(),
-          const SizedBox(height: 32),
-          CustomButton(
-              onTap: () {
-                Navigator.of(context)
-                    .push(MaterialPageRoute(builder: (context) {
-                  return const PaymentDetailsView();
-                }));
-              },
-              title: 'Continue Payment')
         ],
       ),
     );
