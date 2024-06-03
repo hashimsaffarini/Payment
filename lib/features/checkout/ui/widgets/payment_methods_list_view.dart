@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:payment/core/utils/app_images.dart';
+import 'package:payment/features/checkout/logic/cubit/payment_cubit.dart';
 import 'package:payment/features/checkout/ui/widgets/payment_method_item.dart';
 
 class PaymentMethodsListView extends StatefulWidget {
@@ -29,6 +30,7 @@ class _PaymentMethodsListViewState extends State<PaymentMethodsListView> {
               onTap: () {
                 setState(() {
                   activeIndex = index;
+                  PaymentCubit.selectedPaymentMethod = index;
                 });
               },
               child: PaymentMethodItem(

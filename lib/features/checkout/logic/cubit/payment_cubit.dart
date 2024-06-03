@@ -10,7 +10,7 @@ class PaymentCubit extends Cubit<PaymentState> {
   PaymentCubit(this.checkoutRepo) : super(PaymentInitial());
 
   final CheckoutRepo checkoutRepo;
-
+  static var selectedPaymentMethod = 0;
   Future makePayment(
       {required PaymentIintentInputModel paymentIintentInputModel}) async {
     emit(PaymentLoading());
