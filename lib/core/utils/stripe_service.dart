@@ -66,7 +66,7 @@ class StripeService {
       url: 'https://api.stripe.com/v1/ephemeral_keys',
       token: ApiKeys.secretKey,
       headers: {
-        'Authorization': 'Bearer $ApiKeys.secretKey',
+        'Authorization': 'Bearer ${ApiKeys.secretKey}',
         'Stripe-Version': '2024-04-10',
       },
     );
