@@ -3,6 +3,7 @@ import 'package:flutter_stripe/flutter_stripe.dart';
 import 'package:payment/core/utils/api_keys.dart';
 import 'package:payment/core/utils/api_service.dart';
 import 'package:payment/features/checkout/data/models/ephemeral_key/ephemeral_key.dart';
+import 'package:payment/features/checkout/data/models/init_payment_sheet_input_model.dart';
 import 'package:payment/features/checkout/data/models/payment_iintent_input_model.dart';
 import 'package:payment/features/checkout/data/models/payment_intent_model/payment_intent_model.dart';
 
@@ -23,11 +24,15 @@ class StripeService {
   }
 
   Future initiatePaymentSheet(
-      {required String paymentIntentClientSecret}) async {
+      {required InitPaymentSheetInputModel initiatePaymentSheet}) async {
     await Stripe.instance.initPaymentSheet(
-        paymentSheetParameters: SetupPaymentSheetParameters(
-            paymentIntentClientSecret: paymentIntentClientSecret,
-            merchantDisplayName: 'Hashim'));
+      paymentSheetParameters: SetupPaymentSheetParameters(
+        paymentIntentClientSecret: initiatePaymentSheet.clientSecret,
+        customerEphemeralKeySecret: initiatePaymentSheet.ephmeralKeySecret,
+        customerId: initiatePaymentSheet.customerId,
+        merchantDisplayName: 'Hashim',
+      ),
+    );
   }
 
   Future<void> displayPaymentSheet() async {
@@ -37,8 +42,17 @@ class StripeService {
   Future makePayment(
       {required PaymentIintentInputModel paymentIintentInputModel}) async {
     var paymentIntent = await createPaymentIntent(paymentIintentInputModel);
+    var ephemeralKey = await createEphemeralKey(
+        customerId: paymentIintentInputModel.customerID);
+
+    var initiatePaymentSheetModel = InitPaymentSheetInputModel(
+      clientSecret: paymentIntent.clientSecret!,
+      customerId: paymentIintentInputModel.customerID,
+      ephmeralKeySecret: ephemeralKey.secret!,
+    );
     await initiatePaymentSheet(
-        paymentIntentClientSecret: paymentIntent.clientSecret!);
+      initiatePaymentSheet: initiatePaymentSheetModel,
+    );
     await displayPaymentSheet();
   }
 
