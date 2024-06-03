@@ -41,7 +41,6 @@ class StripeService {
     await displayPaymentSheet();
   }
 
-
   // Future<PaymentIntentModel> createCustomer(
   //     PaymentIintentInputModel paymentIntentInputModel) async {
   //   var response = await apiService.post(

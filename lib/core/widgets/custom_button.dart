@@ -4,7 +4,7 @@ import 'package:payment/core/utils/styles.dart';
 class CustomButton extends StatelessWidget {
   const CustomButton({
     super.key,
-     this.onTap,
+    this.onTap,
     required this.title,
     this.isLoading = false,
   });
